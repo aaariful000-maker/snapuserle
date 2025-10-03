@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ad Viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      text-align: center;
+      padding: 40px;
+      color: #fff;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+    #adsArea {
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      min-height: 250px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    button {
+      padding: 14px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ Gigapub Ads Viewer ✨</h1>
+  <button onclick="startAds()">▶ Start Ads</button>
+
+  <div id="adsArea">
+    এখানে ক্লিক করলে Ads আসবে...
+  </div>
+
+  <script>
+    let adsInterval;
+
+    function loadAd() {
+      const adsArea = document.getElementById("adsArea");
+      adsArea.innerHTML = `<script src="https://ad.gigapub.tech/script?id=1104"><\/script>`;
+    }
+
+    function startAds() {
+      loadAd(); // প্রথমবার সাথে সাথে লোড হবে
+      clearInterval(adsInterval); // আগের interval clear করে দিচ্ছি
+      adsInterval = setInterval(loadAd, 5000); // প্রতি ৫ সেকেন্ড পর নতুন ad
+    }
+  </script>
+</body>
+</html>
